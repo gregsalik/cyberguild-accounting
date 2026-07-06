@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --coral:   #F26A3D;
+  --forest:  #0E3F2F;
+  --cream:   #F5F0E8;
+  --ink:     #111111;
+  --muted:   #6B7280;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #FAFAF8;
+  color: #111111;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Section rhythm */
+.section  { padding-top: 7rem; padding-bottom: 7rem; }
+.section-sm { padding-top: 4rem; padding-bottom: 4rem; }
+@media (max-width: 768px) {
+  .section    { padding-top: 4rem; padding-bottom: 4rem; }
+  .section-sm { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+}
+
+/* Swipe underline */
+.hover-line {
+  position: relative;
+  display: inline-block;
+}
+.hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--coral);
+  transition: width 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.hover-line:hover::after { width: 100%; }
+
+/* Ghost number display — used in process section */
+.ghost-number {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  -webkit-text-stroke: 1.5px currentColor;
+  color: transparent;
+}
+
+/* Grain texture for hero */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
