@@ -1,29 +1,31 @@
 import Nav          from '@/components/nav'
+import AudienceBar  from '@/components/audience-bar'
 import Hero         from '@/components/hero'
-import Marquee      from '@/components/marquee'
-import Integrations from '@/components/integrations'
+import TrustBar     from '@/components/marquee'
+import Positioning  from '@/components/integrations'
 import Services     from '@/components/services'
-import WhyUs        from '@/components/why-us'
+import Tiers        from '@/components/why-us'
 import Process      from '@/components/process'
-import Testimonials from '@/components/testimonials'
-import Compliance   from '@/components/compliance'
+import Outcomes     from '@/components/testimonials'
 import Faq          from '@/components/faq'
 import CtaSection   from '@/components/cta-section'
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Nav />
-      <Hero />
-      <Marquee />
-      <Integrations />
-      <Services />
-      <WhyUs />
-      <Process />
-      <Testimonials />
-      <Compliance />
-      <Faq />
-      <CtaSection />
-    </main>
+      <AudienceBar />
+      <main>
+        <Hero />
+        <TrustBar />
+        <Positioning />
+        <Services />
+        <Tiers />
+        <Process />
+        <Outcomes />
+        <Faq />
+        <CtaSection />
+      </main>
+    </>
   )
 }

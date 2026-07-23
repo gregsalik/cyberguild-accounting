@@ -1,31 +1,41 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Fraunces, Inter, IBM_Plex_Mono } from 'next/font/google'
+import { Providers } from './providers'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-inter',
   display: 'swap',
 })
 
+const mono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Cyberguild Accounting — Outsourced Accounting & Bookkeeping',
-  description: 'Expert outsourced accounting, bookkeeping, payroll, and tax services. Cyberguild Accounting works as an extension of your practice, delivering precision at scale.',
+  title: 'Cyberguild Accounting — Bookkeeping, Payroll & Tax',
+  description: 'Outsourced accounting for business owners and white-label production for accounting firms. Bookkeeping, payroll, and tax — delivered by a dedicated team.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

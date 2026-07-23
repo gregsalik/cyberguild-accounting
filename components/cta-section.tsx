@@ -1,172 +1,135 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
+import { useRef, useState } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useAudience } from '@/context/audience-context'
+import { CONTENT } from '@/lib/content'
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const
 
+const NAV_LINKS = [
+  { label: 'Services',     href: '#services' },
+  { label: 'Engagements',  href: '#tiers' },
+  { label: 'How It Works', href: '#process' },
+  { label: 'FAQ',          href: '#faq' },
+  { label: 'Contact',      href: '#contact' },
+]
+
 export default function CtaSection() {
+  const { audience } = useAudience()
+  const c = CONTENT[audience]
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const [submitted, setSubmitted] = useState(false)
 
   return (
     <>
-      {/* CTA Section */}
-      <section id="cta" className="section" style={{ backgroundColor: '#FAFAF8' }}>
-        <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <div ref={ref} className="grid lg:grid-cols-[1fr_400px] gap-0 border overflow-hidden"
-            style={{ borderColor: '#E2E8F0' }}>
+      <section id="contact" ref={ref} style={{ padding: '24px 0 80px', backgroundColor: 'var(--paper)' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '0 32px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease }}
+            style={{
+              backgroundColor: 'var(--green-deep)',
+              borderRadius: '16px',
+              padding: 'clamp(2.5rem, 6vh, 3.5rem) clamp(2rem, 5vw, 3.5rem)',
+              position: 'relative',
+              overflow: 'hidden',
+              display: 'grid',
+              gap: '3rem',
+            }}
+            className="md:grid-cols-2"
+          >
+            <div aria-hidden style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(to bottom, transparent 0 27px, rgba(255,255,255,0.04) 27px 28px)', pointerEvents: 'none' }} />
 
-            {/* Left — main CTA */}
-            <div className="p-10 md:p-14" style={{ backgroundColor: '#0E3F2F' }}>
-              <motion.p initial={{ opacity: 0, y: 8 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4 }}
-                className="font-sans text-xs font-semibold uppercase tracking-widest mb-4"
-                style={{ color: '#F26A3D', letterSpacing: '0.16em' }}>
-                Ready to Scale?
-              </motion.p>
-              <motion.h2 initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.55, delay: 0.07, ease }}
-                className="font-serif font-bold mb-5"
-                style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#F5F0E8', letterSpacing: '-0.025em', lineHeight: 1.1 }}>
-                Let&apos;s build your<br />
-                <em style={{ color: '#F26A3D', fontStyle: 'italic' }}>outsourced team today.</em>
-              </motion.h2>
-              <motion.p initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                className="font-sans text-base leading-relaxed mb-8"
-                style={{ color: 'rgba(245,240,232,0.6)', maxWidth: '44ch', fontWeight: 300 }}>
-                Book a free consultation. We&apos;ll map your workflow and show you exactly how our team can support your practice — first deliverable within two weeks.
-              </motion.p>
-
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: 0.25, ease }}
-                className="flex flex-wrap gap-3 mb-8">
-                <a href="mailto:hello@cyberguild.co"
-                  className="inline-flex items-center gap-2 font-sans text-sm font-semibold px-7 py-3.5 transition-opacity hover:opacity-85"
-                  style={{ backgroundColor: '#F26A3D', color: '#fff' }}>
-                  Book a Free Consultation
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden>
-                    <path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="square" />
-                  </svg>
-                </a>
-                <a href="mailto:hello@cyberguild.co"
-                  className="inline-flex items-center gap-2 font-sans text-sm font-medium px-7 py-3.5 border transition-all hover:bg-white/10"
-                  style={{ borderColor: 'rgba(245,240,232,0.2)', color: 'rgba(245,240,232,0.75)' }}>
-                  Send an Enquiry
-                </a>
-              </motion.div>
-
-              <motion.p initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-                transition={{ delay: 0.4 }}
-                className="font-sans text-xs" style={{ color: 'rgba(245,240,232,0.3)' }}>
-                No commitment required &middot; Response within 24 hours &middot; Free workflow review included
-              </motion.p>
-            </div>
-
-            {/* Right — contact panel */}
-            <div className="p-10 border-t lg:border-t-0 lg:border-l flex flex-col justify-between"
-              style={{ borderColor: '#E2E8F0', backgroundColor: '#fff' }}>
-              <div>
-                <motion.h3 initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.2 }}
-                  className="font-serif font-semibold text-xl mb-7" style={{ color: '#111111' }}>
-                  Get In Touch
-                </motion.h3>
-
-                {[
-                  { label: 'Email', value: 'hello@cyberguild.co', href: 'mailto:hello@cyberguild.co' },
-                  { label: 'Phone', value: '+1 (234) 567-8900', href: 'tel:+12345678900' },
-                  { label: 'Response', value: 'Within 24 hours', href: '#' },
-                ].map((item, i) => (
-                  <motion.a key={item.label} href={item.href}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.25 + i * 0.07, ease }}
-                    className="flex items-start gap-3 mb-5 group">
-                    <div className="w-px h-full min-h-[2rem] mt-1 flex-shrink-0"
-                      style={{ backgroundColor: '#F26A3D', opacity: 0.4 }} aria-hidden />
-                    <div>
-                      <p className="font-sans text-xs uppercase tracking-widest mb-0.5"
-                        style={{ color: '#9CA3AF', letterSpacing: '0.1em' }}>{item.label}</p>
-                      <p className="font-sans text-sm font-medium transition-colors duration-200 group-hover:text-[#F26A3D]"
-                        style={{ color: '#111111' }}>{item.value}</p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-
-              {/* Cert strip */}
-              <div className="pt-6 border-t" style={{ borderColor: '#E2E8F0' }}>
-                <p className="font-sans text-xs uppercase tracking-widest mb-3"
-                  style={{ color: '#9CA3AF', letterSpacing: '0.1em' }}>
-                  Certified &amp; Compliant
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['ISO 27001', 'GDPR', 'Cyber Essentials', 'MFA'].map(c => (
-                    <span key={c} className="font-sans text-xs px-2.5 py-1 border"
-                      style={{ borderColor: '#E2E8F0', color: '#4A5568' }}>
-                      {c}
-                    </span>
-                  ))}
+            {/* Left copy */}
+            <AnimatePresence mode="wait">
+              <motion.div key={audience} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }} style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8FD1AC', display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
+                  <span style={{ width: 16, height: 1, backgroundColor: '#8FD1AC', display: 'inline-block' }} />
+                  Get Started
                 </div>
-              </div>
+                <h2 style={{ fontFamily: 'var(--font-fraunces)', fontWeight: 600, fontSize: 'clamp(24px,3vw,34px)', color: 'var(--paper)', letterSpacing: '-0.02em', margin: '0 0 1rem', lineHeight: 1.15 }}>
+                  {c.ctaH2}
+                </h2>
+                <p style={{ fontFamily: 'var(--font-inter)', fontSize: '15px', color: '#D8E3DA', lineHeight: 1.65, margin: 0 }}>
+                  {c.ctaLede}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Right: form */}
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <AnimatePresence mode="wait">
+                {submitted ? (
+                  <motion.div key="thanks" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
+                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '220px', textAlign: 'center', gap: '1rem' }}>
+                    <div style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: 'rgba(143,209,172,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden><path d="M4 11l5 5 9-9" stroke="#8FD1AC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </div>
+                    <p style={{ fontFamily: 'var(--font-fraunces)', fontStyle: 'italic', fontSize: '18px', color: 'var(--paper)', margin: 0 }}>Request received.</p>
+                    <p style={{ fontFamily: 'var(--font-inter)', fontSize: '13.5px', color: '#D8E3DA', margin: 0 }}>We&apos;ll be in touch within one business day.</p>
+                  </motion.div>
+                ) : (
+                  <motion.form key="form" onSubmit={e => { e.preventDefault(); setSubmitted(true) }} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {[
+                      { type: 'text',  ph: 'Name',                        req: true  },
+                      { type: 'email', ph: 'Work email',                   req: true  },
+                      { type: 'text',  ph: c.ctaCompanyPlaceholder,        req: false },
+                    ].map(f => (
+                      <input key={f.ph} type={f.type} placeholder={f.ph} required={f.req}
+                        style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 7, padding: '11px 14px', color: '#fff', fontFamily: 'var(--font-inter)', fontSize: '14px', outline: 'none', transition: 'border-color 0.2s' }}
+                        onFocus={e => (e.target.style.borderColor = 'rgba(143,209,172,0.55)')}
+                        onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.2)')}
+                      />
+                    ))}
+                    <textarea placeholder={c.ctaMessagePlaceholder} rows={3}
+                      style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 7, padding: '11px 14px', color: '#fff', fontFamily: 'var(--font-inter)', fontSize: '14px', outline: 'none', resize: 'vertical', transition: 'border-color 0.2s' }}
+                      onFocus={e => (e.target.style.borderColor = 'rgba(143,209,172,0.55)')}
+                      onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.2)')}
+                    />
+                    <button type="submit"
+                      style={{ backgroundColor: 'var(--paper)', color: 'var(--green-deep)', fontFamily: 'var(--font-inter)', fontWeight: 600, fontSize: '14.5px', padding: '13px', borderRadius: 6, border: 'none', cursor: 'pointer', transition: 'background-color 0.15s' }}
+                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#fff')}
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'var(--paper)')}
+                    >
+                      {c.ctaButton}
+                    </button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#0a1f17', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-        <div className="max-w-7xl mx-auto px-5 md:px-8 py-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-            <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <Image src="/logo.webp" alt="Cyberguild" width={815} height={240}
-                  className="brightness-0 invert opacity-60"
-                  style={{ height: '18px', width: 'auto' }} />
-                <span className="font-serif text-sm font-medium" style={{ color: 'rgba(245,240,232,0.5)' }}>
-                  Accounting
-                </span>
-              </div>
-              <p className="font-sans text-xs leading-relaxed" style={{ color: 'rgba(245,240,232,0.3)' }}>
-                Premium outsourced accounting services for practices worldwide.
-              </p>
+      <footer style={{ borderTop: '1px solid var(--rule)', padding: '2.5rem 0', backgroundColor: 'var(--paper)' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '0 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+              <div style={{ width: 26, height: 26, borderRadius: 5, backgroundColor: 'var(--green-deep)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--paper)', fontFamily: 'var(--font-fraunces)', fontWeight: 700, fontSize: 13 }}>G</div>
+              <b style={{ fontFamily: 'var(--font-fraunces)', fontSize: '15px', color: 'var(--ink)' }}>Cyberguild Accounting</b>
             </div>
-            {[
-              { title: 'Services', links: ['Bookkeeping', 'Payroll', 'Year-End Accounts', 'Management Accounts', 'Tax Support', 'Audit Support'] },
-              { title: 'Company', links: ['About Us', 'How It Works', 'Case Studies', 'Security', 'Careers'] },
-              { title: 'Contact', links: ['hello@cyberguild.co', 'Book a Consultation', 'Partner Programme'] },
-            ].map(col => (
-              <div key={col.title}>
-                <p className="font-sans text-xs font-semibold uppercase tracking-widest mb-4"
-                  style={{ color: 'rgba(245,240,232,0.3)', letterSpacing: '0.12em' }}>
-                  {col.title}
-                </p>
-                <ul className="flex flex-col gap-2.5">
-                  {col.links.map(l => (
-                    <li key={l}>
-                      <a href="#" className="font-sans text-sm transition-colors duration-200 hover:text-[#F26A3D]"
-                        style={{ color: 'rgba(245,240,232,0.4)' }}>{l}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--ink-soft)', marginBottom: '4px' }}>A division of Cyberguild · cyberguild.dev</div>
+            <AnimatePresence mode="wait">
+              <motion.div key={audience} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}
+                style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--ink-soft)', opacity: 0.7 }}>
+                {c.footTagline}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <nav style={{ display: 'flex', gap: '1.75rem', flexWrap: 'wrap' }}>
+            {NAV_LINKS.map(l => (
+              <a key={l.label} href={l.href}
+                style={{ fontFamily: 'var(--font-inter)', fontSize: '13.5px', color: 'var(--ink-soft)', textDecoration: 'none', transition: 'color 0.15s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--ink)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--ink-soft)')}
+              >
+                {l.label}
+              </a>
             ))}
-          </div>
-
-          <div className="border-t pt-7 flex flex-col sm:flex-row items-center justify-between gap-4"
-            style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-            <p className="font-sans text-xs" style={{ color: 'rgba(245,240,232,0.2)' }}>
-              &copy; 2026 Cyberguild Accounting. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(l => (
-                <a key={l} href="#" className="font-sans text-xs transition-colors duration-200 hover:text-[#F26A3D]"
-                  style={{ color: 'rgba(245,240,232,0.25)' }}>{l}</a>
-              ))}
-            </div>
-          </div>
+          </nav>
         </div>
       </footer>
     </>
