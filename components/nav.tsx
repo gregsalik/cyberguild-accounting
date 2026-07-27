@@ -49,11 +49,11 @@ export default function Nav() {
 
           {/* Brand */}
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <div style={{ width: 34, height: 34, borderRadius: 7, backgroundColor: 'var(--green-deep)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--paper)', fontFamily: 'var(--font-fraunces)', fontWeight: 700, fontSize: 17 }}>
-              G
+            <div style={{ width: 34, height: 34, borderRadius: 7, backgroundColor: 'var(--green-deep)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--paper)', fontFamily: 'var(--font-fraunces)', fontWeight: 700, fontSize: 13 }}>
+              CG
             </div>
             <div style={{ lineHeight: 1.15 }}>
-              <div style={{ fontFamily: 'var(--font-fraunces)', fontWeight: 600, fontSize: 17, color: 'var(--ink)' }}>Cyberguild Accounting</div>
+              <div style={{ fontFamily: 'var(--font-fraunces)', fontWeight: 600, fontSize: 17, color: 'var(--ink)' }}>CG Ledgers</div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.09em', color: 'var(--ink-soft)', textTransform: 'uppercase' }}>
                 {audience === 'firm' ? 'Practice Delivery Partner' : 'A Cyberguild Company'}
               </div>

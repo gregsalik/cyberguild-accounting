@@ -32,7 +32,7 @@ export default function Positioning() {
             }}
           >
             {c.positioning.pre}{' '}
-            <span style={{ color: 'var(--green)', fontStyle: 'normal', fontWeight: 600 }}>Cyberguild Accounting</span>{' '}
+            <span style={{ color: 'var(--green)', fontStyle: 'normal', fontWeight: 600 }}>CG Ledgers</span>{' '}
             {c.positioning.post}
           </motion.p>
         </AnimatePresence>

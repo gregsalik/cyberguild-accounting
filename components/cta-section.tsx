@@ -108,10 +108,10 @@ export default function CtaSection() {
         <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '0 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-              <div style={{ width: 26, height: 26, borderRadius: 5, backgroundColor: 'var(--green-deep)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--paper)', fontFamily: 'var(--font-fraunces)', fontWeight: 700, fontSize: 13 }}>G</div>
-              <b style={{ fontFamily: 'var(--font-fraunces)', fontSize: '15px', color: 'var(--ink)' }}>Cyberguild Accounting</b>
+              <div style={{ width: 26, height: 26, borderRadius: 5, backgroundColor: 'var(--green-deep)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--paper)', fontFamily: 'var(--font-fraunces)', fontWeight: 700, fontSize: 10 }}>CG</div>
+              <b style={{ fontFamily: 'var(--font-fraunces)', fontSize: '15px', color: 'var(--ink)' }}>CG Ledgers</b>
             </div>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--ink-soft)', marginBottom: '4px' }}>A division of Cyberguild · cyberguild.dev</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--ink-soft)', marginBottom: '4px' }}>A Cyberguild Company · cgledgers.com</div>
             <AnimatePresence mode="wait">
               <motion.div key={audience} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}
                 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--ink-soft)', opacity: 0.7 }}>

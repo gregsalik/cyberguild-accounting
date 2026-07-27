@@ -92,7 +92,7 @@ export const CONTENT: Record<Audience, SiteContent> = {
     ],
     trustLabel: 'Works inside your stack',
     positioning: {
-      pre: "You didn't start a business to reconcile your own bank feed. Cyberguild Accounting runs the back office —",
+      pre: "You didn't start a business to reconcile your own bank feed. CG Ledgers runs the back office —",
       post: 'bookkeeping, payroll, tax — so your numbers are always ready for a decision, a lender, or an audit.',
     },
     servicesEyebrow: 'What We Handle',
@@ -136,7 +136,7 @@ export const CONTENT: Record<Audience, SiteContent> = {
       { q: 'Do you handle VAT registration and Making Tax Digital?',     a: 'Yes. We register you for VAT where needed and file every return under Making Tax Digital, alongside PAYE and Corporation Tax as they fall due.' },
       { q: "We're UK-based but might expand to the US or Canada — does that matter?", a: "No. We work with UK, US, and Canadian entities, so if the business expands across the Atlantic your books and reporting move with you rather than starting over with a new provider." },
       { q: 'Which accounting software do you use?',                      a: "We work inside whatever you already run — Xero, QuickBooks Online, and Sage most commonly — rather than migrating you to a proprietary system." },
-      { q: 'Do you have experience with restaurants and hospitality?',   a: "Yes — through Cyberguild's marketing side we already work close to restaurant, winery, and hospitality operators, so tronc scheme reporting, high-volume POS reconciliation, and seasonal cash flow aren't new territory." },
+      { q: 'Do you have experience with restaurants and hospitality?',   a: "Yes — through our group's marketing division we already work closely with restaurant, winery, and hospitality operators, so tronc scheme reporting, high-volume POS reconciliation, and seasonal cash flow aren't new territory." },
       { q: 'Is there a minimum contract length?',                        a: "No. Engagements run month-to-month. We'd rather earn the renewal than lock you into one." },
       { q: 'I run an accounting firm — do you work with firms too?',     a: 'Yes — switch to the "Accounting Firm" view above. We provide white-label bookkeeping, payroll, and tax production for firms who\'d rather outsource delivery than hire for it.' },
     ],
@@ -163,12 +163,12 @@ export const CONTENT: Record<Audience, SiteContent> = {
     ],
     trustLabel: "Works inside your firm's stack",
     positioning: {
-      pre: "You didn't build a practice to spend busy season on data entry. Cyberguild Accounting is the production team behind your production team —",
+      pre: "You didn't build a practice to spend busy season on data entry. CG Ledgers is the production team behind your production team —",
       post: "bookkeeping, payroll, and tax work delivered under your name, reviewed and signed off by you. Your clients never hear from us.",
     },
     servicesEyebrow: 'What We Produce',
     servicesH2: 'Capacity, filed by task.',
-    servicesSub: "Hand us one service or your whole production line. Everything ships under your firm's name, formatted to your templates — nothing your clients see says 'Cyberguild.'",
+    servicesSub: "Hand us one service or your whole production line. Everything ships under your firm's name, formatted to your templates — nothing your clients see says 'CG Ledgers.'",
     services: [
       { icon: 'book',    title: 'Bookkeeping & Reconciliation',    desc: 'Monthly write-up, coding, and reconciliation delivered ready for partner review — not redone from scratch on your end.' },
       { icon: 'payroll', title: 'Payroll Processing',              desc: "PAYE runs, pensions, and payslips processed on each client's schedule, under your firm's name." },

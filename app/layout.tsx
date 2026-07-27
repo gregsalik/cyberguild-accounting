@@ -26,7 +26,7 @@ const mono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Cyberguild Accounting — Bookkeeping, Payroll & Tax',
+  title: 'CG Ledgers — Bookkeeping, Payroll & Tax',
   description: 'Outsourced accounting for business owners and white-label production for accounting firms. Bookkeeping, payroll, and tax — delivered by a dedicated team.',
 }
 
