@@ -1,5 +1,6 @@
-import Nav          from '@/components/nav'
-import AudienceBar  from '@/components/audience-bar'
+import Nav                from '@/components/nav'
+import AudienceBar        from '@/components/audience-bar'
+import AudienceTransition from '@/components/audience-transition'
 import Hero         from '@/components/hero'
 import TrustBar     from '@/components/marquee'
 import Positioning  from '@/components/integrations'
@@ -13,6 +14,7 @@ import CtaSection   from '@/components/cta-section'
 export default function Home() {
   return (
     <>
+      <AudienceTransition />
       <Nav />
       <AudienceBar />
       <main>
