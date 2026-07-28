@@ -176,7 +176,6 @@ export const CONTENT: Record<Audience, SiteContent> = {
       { icon: 'doc',     title: 'VAT & Tax Return Preparation',   desc: "Returns prepared and reconciled to the books, ready for your review and filing — or filed directly under your agent authorization, your call." },
       { icon: 'house',   title: 'Catch-Up & Cleanup Projects',   desc: 'Backlogged client files brought current and reconciled, handed back without disrupting your live workload.' },
       { icon: 'chart',   title: 'Management Reporting',           desc: "P&L, balance sheet, and cash flow packs built to your firm's template, ready to go out under your letterhead." },
-      { icon: 'people',  title: 'Overflow & Seasonal Capacity',   desc: 'Extra hands during busy season, parental leave, or a hiring gap — without a recruiting cycle.' },
       { icon: 'doc',     title: 'Statutory Annual Accounts Preparation', desc: "Annual accounts prepared to filing standard, reconciled to the books, ready for partner review and Companies House submission — delivered under your firm's name." },
     ],
     tiersEyebrow: 'Engagement Models',
